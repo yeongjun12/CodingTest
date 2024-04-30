@@ -4,7 +4,8 @@ SELECT
 FROM 
         FIRST_HALF A, ICECREAM_INFO B
 WHERE 
-        A.TOTAL_ORDER > 3000
+        A.FLAVOR = B.FLAVOR
 AND 
-        A.FLAVOR = 'strawberry' OR  A.FLAVOR = 'melon'
-GROUP BY A.FLAVOR;
+        TOTAL_ORDER > 3000
+AND     
+        INGREDIENT_TYPE = 'fruit_based';
