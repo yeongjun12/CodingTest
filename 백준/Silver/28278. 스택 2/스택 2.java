@@ -21,25 +21,22 @@ public class Main {
     		switch(num) {
     		
     		case 1 : stack.push(pushNum);
-    			break;
+    				break;
     		case 2 : 
     				if(stack.empty()) {
     				  wr.write(-1 + "\n");
     				}else {
-    				  wr.write(stack.pop().toString() + "\n");
+    				  wr.write(stack.pop() + "\n");
     				}
-    			break;
-    		case 3 : wr.write(stack.size() + "\n");
-    			break;
-    		case 4 : int n = (stack.empty()) ? 1 : 0;  
-    			wr.write(n + "\n");
-    			break;
+    				break;
+    		case 3 : 
+    				wr.write(stack.size() + "\n");
+    				break;
+    		case 4 : 
+    			 	wr.write(stack.isEmpty() ? "1\n" : "0\n");
+    			 	break;
     		case 5 : 
-    			if(stack.empty()) {
-    				wr.write(-1 + "\n");
-    			}else {
-    				wr.write(stack.peek()+"\n");
-    			}
+    			 	wr.write(stack.isEmpty() ? "-1\n" : stack.peek() + "\n");
     		}
     	}
     	wr.flush();
