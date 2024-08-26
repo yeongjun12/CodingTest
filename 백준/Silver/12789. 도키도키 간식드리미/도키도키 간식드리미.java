@@ -9,40 +9,40 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(System.out));
-        
-        int N = Integer.parseInt(br.readLine());
-        String[] input = br.readLine().split(" ");
-        
+
         Stack<Integer> stack = new Stack<>();
-        int expected = 1;
-        
-        for (String s : input) {
+        int N = Integer.parseInt(br.readLine());
+        String[] numArr = br.readLine().split(" ");
+        int flag = 1;
+
+        for (String s : numArr) {
             int student = Integer.parseInt(s);
             
-            while (!stack.isEmpty() && stack.peek() == expected) {
+            // Process stack if the top of the stack is the expected number
+            while (!stack.isEmpty() && stack.peek() == flag) {
                 stack.pop();
-                expected++;
+                flag++;
             }
             
-            if (student == expected) {
-                expected++;
+            if (student == flag) {
+                flag++;
             } else {
                 stack.push(student);
             }
         }
-        
-        // After processing all the students in the queue
-        while (!stack.isEmpty() && stack.peek() == expected) {
+
+        // Final check of the stack
+        while (!stack.isEmpty() && stack.peek() == flag) {
             stack.pop();
-            expected++;
+            flag++;
         }
-        
-        if (expected == N + 1) {
+
+        if (flag == N + 1) {
             wr.write("Nice\n");
         } else {
             wr.write("Sad\n");
         }
-        
+
         wr.flush();
         wr.close();
         br.close();
